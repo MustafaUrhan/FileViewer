@@ -1,0 +1,27 @@
+Octopus
+http://85.111.48.114:8091/
+User:mustafa.urhan
+Pass:f#d6uS0f
+--------------------------------------------
+Zorlu vpn
+mustafaurh
+Mi95Fjr2
+
+---------------------------------------------
+SonarQube 
+Username : mustafa.urhan
+Password : kG6hujpK
+
+
+----------------------------------------------------------------
+
+stage ortamında 8930 api portu 
+testte 8830
+
+
+-------------------------------------------------------
+Kibana columbia ve com logları
+https://kibana.cls-a.live.inveon.cloud/app/home#/
+
+Kibana GG ve JeansLab logları
+https://kibana.cls-a.plive.inveon.cloud/app/home#/
