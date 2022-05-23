@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TT/NQamC+7qm5qN2vA+6IM2M33uuD0vKW5ZW8e80S5c=",
+  "Hash": "N/zt0V1t4W3r45kTKJzIjdVqMMk7PmGmLHv40I8V5wk=",
   "Source": "WebApi",
   "BasePath": "_content/WebApi",
   "Mode": "Default",
@@ -15,91 +15,5 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\637888634391606563.txt",
-      "SourceId": "WebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\",
-      "BasePath": "_content/WebApi",
-      "RelativePath": "637888634391606563.txt",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\637888634391606563.txt"
-    },
-    {
-      "Identity": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\637888661643444224.png",
-      "SourceId": "WebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\",
-      "BasePath": "_content/WebApi",
-      "RelativePath": "637888661643444224.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\637888661643444224.png"
-    },
-    {
-      "Identity": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\637888685698380019.png",
-      "SourceId": "WebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\",
-      "BasePath": "_content/WebApi",
-      "RelativePath": "637888685698380019.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\637888685698380019.png"
-    },
-    {
-      "Identity": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\637888693473311477.txt",
-      "SourceId": "WebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\",
-      "BasePath": "_content/WebApi",
-      "RelativePath": "637888693473311477.txt",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\637888693473311477.txt"
-    },
-    {
-      "Identity": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\637888694746257944.txt",
-      "SourceId": "WebApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\mustafa.urhan\\source\\MyProjects\\FileViewer\\src\\WebApi\\wwwroot\\",
-      "BasePath": "_content/WebApi",
-      "RelativePath": "637888694746257944.txt",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\637888694746257944.txt"
-    }
-  ]
+  "Assets": []
 }

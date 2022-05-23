@@ -1,0 +1,26 @@
+<h1>Choose File Form </h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="fileForm">
+    <mat-form-field appearance="outline">
+      <mat-label>File Alias</mat-label>
+      <input formControlName="alias" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>File Description</mat-label>
+      <textarea formControlName="description" matInput></textarea>
+    </mat-form-field>
+  </form>
+  <div mat-dialog-action>
+    <button type="button" style="margin-left:8px;" (click)="fileInput.click()" mat-raised-button color="primary">Choose
+      File</button>
+    <input hidden #fileInput type="file" (change)="onChange($event)" name="file">
+    <mat-label *ngIf="file" style="margin-left:8px;">{{file?.name}}</mat-label>
+    <mat-label *ngIf="loading" style="margin-left:8px;">Loading ...</mat-label>
+  </div>
+</div>
+
+<div mat-dialog-action [align]="'end'">
+  <button *ngIf="file" style="margin-left:8px;" mat-raised-button color="primary" (click)="onUpload()">Upload</button>
+</div>
