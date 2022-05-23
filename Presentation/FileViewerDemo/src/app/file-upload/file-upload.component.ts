@@ -15,7 +15,9 @@ export class FileUploadComponent implements OnInit {
     shortLink: string = "";
     loading: boolean = false; // Flag variable
     file: File = null; // Variable to store file
-    fileForm !: FormGroup;
+    fileForm : FormGroup;
+    actionBtn:string="Upload"
+    canUploadFile:boolean=true;
     // Inject service 
     constructor(private apiService: ApiService,
         private formBuilder: FormBuilder, 
@@ -27,8 +29,13 @@ export class FileUploadComponent implements OnInit {
             alias: ['', Validators.required],
             description: ['', Validators.required]
         })
+
+        console.log(this.updatedData);
         if(this.updatedData){
-            this.fileForm.controls['alias']=this.updatedData
+            this.actionBtn="Update"
+            this.canUploadFile=false;
+            this.fileForm.controls['alias']=this.updatedData.alias;
+            this.fileForm.controls['description']=this.updatedData.description;
         }
     }
 

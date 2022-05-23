@@ -19,7 +19,7 @@ export interface FileResponse {
 export class AppComponent implements OnInit {
   dialogref: any;
   title = 'FileViewerDemo';
-  displayedColumns: string[] = ['name', 'alias', 'description', 'createAt', 'contextType', 'update','delete'];
+  displayedColumns: string[] = ['name', 'alias', 'description', 'createAt', 'contextType', 'action'];
   dataSource!: MatTableDataSource<FileResponse>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -52,6 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   updateFile(rowData:any) {
+    console.log(rowData);
     this.dialog.open(DialogComponent,{
       width: '40%',
       data:rowData
