@@ -59,7 +59,7 @@ public class StorageFileManager : IStorageFileService
         var storageFileList = await _storageFileDal.GetList(null);
         var response = new List<StoregaFileGetAllResponse>();
         if (storageFileList!=null) {
-            response = storageFileList.Select(s => new StoregaFileGetAllResponse()
+            response = storageFileList.Where(s=>s.IsDeleted==false).Select(s => new StoregaFileGetAllResponse()
             {
                 Id = s.Id,
                 Alias = s.Alias,

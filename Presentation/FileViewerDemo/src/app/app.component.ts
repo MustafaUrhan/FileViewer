@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     });
   }
   getAllFiles() {
-    this.apiService.getFiles().subscribe({
+    this.apiService.getFilesMetaData().subscribe({
       next: (res) => {
         console.log(res);
         this.dataSource = new MatTableDataSource(res as FileResponse[]);
@@ -57,7 +57,22 @@ export class AppComponent implements OnInit {
       width: '40%',
       data:rowData
     });
-    this.apiService.getFiles().subscribe({
+    this.apiService.getFilesMetaData().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.dataSource = new MatTableDataSource(res as FileResponse[]);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (err) => {
+        console.log(err);
+        alert("Something went horribly wrong!!!")
+      }
+    });
+  }
+  deleteFile(rowData:any){
+    console.log(rowData);
+    this.apiService.deleteFileMetaData(rowData.id).subscribe({
       next: (res) => {
         console.log(res);
         this.dataSource = new MatTableDataSource(res as FileResponse[]);

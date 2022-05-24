@@ -51,10 +51,18 @@ public class FileManagerController : ControllerBase
         return BadRequest(new ErrorResult(BusinessMessages.FailedFileUpload));
     }
 
-    [HttpPut]
-    public async Task<IActionResult> Update([FromBody] StorageFile storageFile)
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Update(int id, StorageFileUpdateRequest storageFileUpdateRequest)
     {
-        var result = await _storageFileService.UpdateAsync(storageFile);
+        var entityResult = await _storageFileService.GetByIdAsync(id);
+        if (!entityResult.Success)
+        {
+            return BadRequest(entityResult.Message);
+        }
+        entityResult.Data.Alias = storageFileUpdateRequest.Alias;
+        entityResult.Data.Description = storageFileUpdateRequest.Description;
+
+        var result = await _storageFileService.UpdateAsync(entityResult.Data);
         if (!result.Success)
         {
             return BadRequest(result);
@@ -62,10 +70,10 @@ public class FileManagerController : ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> Delete([FromBody] int entityId)
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete( int id)
     {
-        var result = await _storageFileService.DeleteAsync(entityId);
+        var result = await _storageFileService.DeleteAsync(id);
         if (!result.Success)
         {
             return BadRequest(result);

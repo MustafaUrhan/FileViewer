@@ -1,23 +1,43 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl ,Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { ApiService } from '../Services/api.service';
 
+interface SelectableType {
+    name: string;
+    abbreviation: string;
+  }
 @Component({
     selector: 'app-file-upload',
     templateUrl: './file-upload.component.html',
     styleUrls: ['./file-upload.component.css']
 })
+
+  
 export class FileUploadComponent implements OnInit {
 
-    // Variable to store shortLink from api response
-    shortLink: string = "";
-    loading: boolean = false; // Flag variable
-    file: File = null; // Variable to store file
-    fileForm : FormGroup;
+    loading: boolean = false; 
+    file: File = null;
+    uploadFileForm : FormGroup;
     actionBtn:string="Upload"
     canUploadFile:boolean=true;
+
+    selectableFileControl = new FormControl('', Validators.required);
+    maxFileSizeControl=new FormControl('',Validators.required)
+    
+ 
+    selectableTypes: SelectableType[] = [
+      {name: 'Comma separated value', abbreviation: '.csv'},
+      {name: 'JPEG image', abbreviation: '.jpeg'},
+      {name: 'PNG image', abbreviation: '.png'},
+      {name: 'Microsoft Excel file', abbreviation: '.xls'},
+      {name: 'Microsoft Excel spreadsheet file', abbreviation: '.xlsx'},
+      {name: 'Microsoft Word file', abbreviation: '.doc'},
+      {name: 'PDF file', abbreviation: '.pdf'},
+      {name: 'Rich Text Format', abbreviation: '.rtf'},
+      {name: 'Plain text file', abbreviation: '.txt'}
+    ];
     // Inject service 
     constructor(private apiService: ApiService,
         private formBuilder: FormBuilder, 
@@ -25,36 +45,60 @@ export class FileUploadComponent implements OnInit {
         private matDialog: MatDialogRef<DialogComponent>) { }
 
     ngOnInit(): void {
-        this.fileForm = this.formBuilder.group({
+        this.uploadFileForm = this.formBuilder.group({
             alias: ['', Validators.required],
-            description: ['', Validators.required]
+            description: ['', Validators.required],
+            selectedType:this.selectableFileControl,
+            maxSize: [Number, Validators.required]
         })
 
-        console.log(this.updatedData);
+        
         if(this.updatedData){
             this.actionBtn="Update"
             this.canUploadFile=false;
-            this.fileForm.controls['alias']=this.updatedData.alias;
-            this.fileForm.controls['description']=this.updatedData.description;
+            this.uploadFileForm.controls['alias'].setValue(this.updatedData.alias);
+            this.uploadFileForm.controls['description'].setValue(this.updatedData.description);
         }
     }
 
     // On file Select
     onChange(event) {
-        this.file = event.target.files[0];
+
+        if(event.target.files[0].size <this.uploadFileForm.get("maxSize").value ){
+            console.log("file size is okey");
+            this.file = event.target.files[0];
+            this.uploadFileForm.controls['maxSize'].setErrors(null);
+        }else{
+            this.uploadFileForm.controls['maxSize'].setErrors({'incorrect': true});
+        }
     }
 
     // OnClick of button Upload
     onUpload() {
         this.loading = !this.loading;
-        this.apiService.fileUpload(this.file, this.fileForm).subscribe(
+        this.apiService.fileUpload(this.file, this.uploadFileForm).subscribe(
             {
                 next: (res) => {
                     this.loading = false;
                 }, error: (err) => {
-                    alert("Something went wrong!!!");
+                    alert(err);
+                }
+            })
+            .add(() => { this.matDialog.close(); });
+        
+    }
+
+    onUpdateData(){
+        console.log("On Update data");
+        this.apiService.updateFileMetaData(this.uploadFileForm,this.updatedData.id).subscribe(
+            {
+                next: (res) => {
+                    this.uploadFileForm.reset();
+                }, error: (err) => {
+                    alert(err);
                 }
             })
             .add(() => { this.matDialog.close(); });
     }
+
 }

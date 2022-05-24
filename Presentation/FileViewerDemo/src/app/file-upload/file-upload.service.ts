@@ -22,7 +22,8 @@ export class FileUploadService {
       formData.append("file", file, file.name);
       formData.append("alias", fileForm.value.alias);
       formData.append("description", fileForm.value.description);
-        
+      formData.append("selectedType", fileForm.value.selectedType);
+      formData.append("maxSize", fileForm.value.maxSize);
       // Make http post request over api
       // with formData as req
       return this.http.post(this.baseApiUrl, formData)
